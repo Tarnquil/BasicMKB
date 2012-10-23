@@ -1,0 +1,26 @@
+#!/usr/bin/env mkb
+options
+{
+}
+
+subprojects
+{
+    iw2d
+}
+
+includepath
+{
+    ./source
+}
+
+files
+{
+    [Source]
+    (source)
+    Main.cpp
+}
+
+assets
+{
+     Projectile.png
+}
