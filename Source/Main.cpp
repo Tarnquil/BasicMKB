@@ -1,37 +1,25 @@
 #include "s3e.h"
 #include "Iw2D.h"
 #include "IwGx.h"
-
-void DrawSprite(CIw2DImage* image, int at_pos_x, int at_pos_y, iwangle angle = 0, iwfixed scale = IW_GEOM_ONE)
-{
-    CIwMat2D m;
-    m.SetRot(angle);
-    
-    m.ScaleRot(scale);
-    
-    m.SetTrans(CIwSVec2(at_pos_x, at_pos_y));
-    
-    Iw2DSetTransformMatrix(m);
-    
-    int x = -(image->GetWidth() / 2);
-    int y = -(image->GetHeight() / 2);
-    Iw2DDrawImage(image, CIwSVec2(x, y));
-}
+#include "BasicSprite.h"
 
 int main()
 {
     IwGxInit();
     Iw2DInit();
     
+    BasicSprite sprite1;
+    BasicSprite sprite2;
+    
     IwGxSetColClear(0, 0, 0, 0);
     
     CIw2DImage* image1 = Iw2DCreateImage("Projectile.png");
-    CIw2DImage* image2 = Iw2DCreateImage("Projectile.png");
+    
+    sprite1.init(100, 100, 1, 90, image1);
+    sprite2.init(200, 100, 1, 90, image1);
     
     int surface_width = Iw2DGetSurfaceWidth();
     int surface_height = Iw2DGetSurfaceHeight();
-    
-    iwangle angle = 0;
     
     while (!s3eDeviceCheckQuitRequest())
     {
@@ -43,18 +31,16 @@ int main()
         
         IwGxClear(IW_GX_COLOUR_BUFFER_F | IW_GX_DEPTH_BUFFER_F);
         
-        DrawSprite(image1, surface_width / 4, surface_height / 2, -angle,IW_GEOM_ONE);
-        DrawSprite(image2, surface_width / 2, surface_height / 2, angle, IW_GEOM_ONE);
-        
-        angle += IW_ANGLE_2PI / 60;
+        sprite1.DrawSprite();
+        sprite2.DrawSprite();
+        sprite1.Update();
+        sprite2.Update();
         
         Iw2DSurfaceShow();
         
         s3eDeviceYield(0);
     }
-    
-    if (image2 != NULL)
-        delete image2;
+
     if (image1 != NULL)
         delete image1;
     
