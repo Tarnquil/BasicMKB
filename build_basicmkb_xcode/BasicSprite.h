@@ -17,7 +17,6 @@ class BasicSprite
     void init(int _x, int _y, float _scale, iwangle rot, CIw2DImage* _image);
     void DrawSprite();
     void Update();
-    ~BasicSprite();
 };
 
 #endif /* defined(__BasicMKB__BasicSprite__) */
