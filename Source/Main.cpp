@@ -13,10 +13,8 @@ int main()
     
     IwGxSetColClear(0, 0, 0, 0);
     
-    CIw2DImage* image1 = Iw2DCreateImage("Projectile.png");
-    
-    sprite1.init(100, 100, 1, 90, image1);
-    sprite2.init(200, 100, 1, 90, image1);
+    sprite1.init(100, 100, 1, 90, Iw2DCreateImage("Projectile.png"));
+    sprite2.init(200, 100, 1, 90, Iw2DCreateImage("Projectile.png"));
     
     int surface_width = Iw2DGetSurfaceWidth();
     int surface_height = Iw2DGetSurfaceHeight();
@@ -36,13 +34,14 @@ int main()
         sprite1.Update();
         sprite2.Update();
         
+        
         Iw2DSurfaceShow();
         
         s3eDeviceYield(0);
     }
 
-    if (image1 != NULL)
-        delete image1;
+    sprite1.~BasicSprite();
+    sprite2.~BasicSprite();
     
     Iw2DTerminate();
     IwGxTerminate();
