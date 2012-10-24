@@ -7,16 +7,14 @@ int main()
 {
     IwGxInit();
     Iw2DInit();
-    
-    BasicSprite sprite1;
-    BasicSprite sprite2;
-    
+
     IwGxSetColClear(0, 0, 0, 0);
     
     CIw2DImage* image1 = Iw2DCreateImage("Projectile.png");
     
-    sprite1.init(100, 100, 1, 90, image1);
-    sprite2.init(200, 100, 1, 90, image1);
+    
+    BasicSprite sprite1 (100, 100, 1, 90, image1);
+    BasicSprite sprite2 (200, 100, 1, 90, image1);
     
     int surface_width = Iw2DGetSurfaceWidth();
     int surface_height = Iw2DGetSurfaceHeight();

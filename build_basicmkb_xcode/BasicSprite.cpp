@@ -1,5 +1,14 @@
 #include "BasicSprite.h"
 
+BasicSprite::BasicSprite(int _x, int _y, float _scale, iwangle _rot, CIw2DImage* _image)
+{
+    x = _x;
+    y = _y;
+    scale = _scale;
+    image = _image;
+    rot = _rot;
+}
+
 void BasicSprite::init(int _x, int _y, float _scale, iwangle _rot, CIw2DImage* _image)
 {
     x = _x;
@@ -33,3 +42,5 @@ void BasicSprite::Update()
 {
     rot += IW_ANGLE_2PI / 60;
 }
+
+
