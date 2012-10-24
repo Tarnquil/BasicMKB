@@ -33,12 +33,3 @@ void BasicSprite::Update()
 {
     rot += IW_ANGLE_2PI / 60;
 }
-
-BasicSprite::~BasicSprite()
-{
-    if (image != NULL)
-    {
-        image = NULL;
-        delete image;
-    }
-}
