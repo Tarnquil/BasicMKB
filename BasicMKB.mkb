@@ -10,7 +10,7 @@ subprojects
 
 includepath
 {
-    ./source
+    ./Source
 }
 
 files
@@ -18,9 +18,25 @@ files
     [Source]
     (source)
     Main.cpp
+    BasicSprite.cpp
+    BasicSprite.h
+    TouchHandle.cpp
+    TouchHandle.h
 }
 
 assets
 {
      Projectile.png
+}
+
+deployments 
+{ 
+    ["iPhone"]
+    name="iScreamCandy"
+    caption="iScream Candy" 
+    manufacturer="Company Name" 
+    provider="Company Name"
+    version-major=1 
+    version-minor=0 
+    iphone-appid="com.companyname.iscreamcandy"
 }
