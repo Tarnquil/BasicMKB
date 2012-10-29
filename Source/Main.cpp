@@ -27,6 +27,7 @@ int main()
         
         touchSystem.Update();
         
+        
         IwGxClear(IW_GX_COLOUR_BUFFER_F | IW_GX_DEPTH_BUFFER_F);
         
         if (touchSystem.numOfTouches > 0)
